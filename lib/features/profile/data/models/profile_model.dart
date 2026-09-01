@@ -10,4 +10,27 @@ class ProfileModel extends Profile {
     required this.lastName,
     required super.role,
   }) : super(fullName: "$firstName $lastName");
+
+  //map -> ProfileModel
+  factory ProfileModel.fromJson(Map<String, dynamic> dataJson) {
+    Map<String, dynamic> data = dataJson['data'];
+
+    return ProfileModel(
+      id: data["id"],
+      firstName: data["firstName"],
+      lastName: data["lastName"],
+      role: data["role"],
+    );
+  }
+
+  //ProfileModel -> Map
+  Map<String, dynamic> toJson() {
+    return {
+      "id": id,
+      "firstName": firstName,
+      "lastName": lastName,
+      "fullName": "$firstName $lastName",
+      "role": role,
+    };
+  }
 }
