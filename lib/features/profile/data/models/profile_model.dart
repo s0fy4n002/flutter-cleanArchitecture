@@ -8,7 +8,8 @@ class ProfileModel extends Profile {
     required super.id,
     required this.firstName,
     required this.lastName,
-    required super.role,
+    required super.email,
+    required super.avatar,
   }) : super(fullName: "$firstName $lastName");
 
   //map -> ProfileModel
@@ -19,7 +20,8 @@ class ProfileModel extends Profile {
       id: data["id"],
       firstName: data["firstName"],
       lastName: data["lastName"],
-      role: data["role"],
+      email: data["email"],
+      avatar: data["avatar"],
     );
   }
 
@@ -30,7 +32,8 @@ class ProfileModel extends Profile {
       "firstName": firstName,
       "lastName": lastName,
       "fullName": "$firstName $lastName",
-      "role": role,
+      "avatar": avatar,
+      "email": email,
     };
   }
 }
