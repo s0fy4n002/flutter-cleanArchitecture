@@ -14,12 +14,11 @@ class ProfileModel extends Profile {
 
   //map -> ProfileModel
   factory ProfileModel.fromJson(Map<String, dynamic> dataJson) {
-    Map<String, dynamic> data = dataJson['data'];
-
+    Map<String, dynamic> data = dataJson;
     return ProfileModel(
       id: data["id"],
-      firstName: data["firstName"],
-      lastName: data["lastName"],
+      firstName: data["first_name"],
+      lastName: data["last_name"],
       email: data["email"],
       avatar: data["avatar"],
     );
@@ -29,9 +28,9 @@ class ProfileModel extends Profile {
   Map<String, dynamic> toJson() {
     return {
       "id": id,
-      "firstName": firstName,
-      "lastName": lastName,
-      "fullName": "$firstName $lastName",
+      "first_name": firstName,
+      "last_name": lastName,
+      "full_name": "$firstName $lastName",
       "avatar": avatar,
       "email": email,
     };
