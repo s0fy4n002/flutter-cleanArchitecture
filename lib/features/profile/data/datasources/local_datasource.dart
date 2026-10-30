@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:clean_architecture/features/profile/data/models/profile_model.dart';
-import 'package:http/http.dart' as http;
+import 'package:hive/hive.dart';
 
 abstract class LocalDataSource {
   Future<List<ProfileModel>> getAllUser(int page);
@@ -9,31 +9,18 @@ abstract class LocalDataSource {
 }
 
 class LocalDataSourceImpl implements LocalDataSource {
+  final HiveInterface hive;
+  LocalDataSourceImpl({required this.hive});
+
   @override
   Future<List<ProfileModel>> getAllUser(int page) async {
-    final response = await http.get(
-      Uri.parse('https://reqres.in/api/users?page=$page'),
-    );
-
-    if (response.statusCode == 200) {
-      final List<dynamic> data = json.decode(response.body)['data'];
-      return data.map((item) => ProfileModel.fromJson(item)).toList();
-    } else {
-      throw Exception('Failed to load users');
-    }
+    var box = hive.box('profile_box');
+    return box.get("getAllUser");
   }
 
   @override
   Future<ProfileModel> getUser(int id) async {
-    // TODO: implement getUser
-    Uri url = Uri.parse('https://reqres.in/api/users/$id');
-    final response = await http.get(url);
-
-    if (response.statusCode == 200) {
-      final Map<String, dynamic> data = json.decode(response.body)['data'];
-      return ProfileModel.fromJson(data);
-    } else {
-      throw Exception('Failed to load user');
-    }
+    var box = hive.box('profile_box');
+    return box.get("getUser");
   }
 }
