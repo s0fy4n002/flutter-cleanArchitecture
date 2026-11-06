@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:clean_architecture/core/error/exception.dart';
 import 'package:clean_architecture/features/profile/data/models/profile_model.dart';
 import 'package:http/http.dart' as http;
 
@@ -32,8 +33,10 @@ class RemoteDataSourceImpl implements RemoteDataSource {
     if (response.statusCode == 200) {
       final Map<String, dynamic> data = json.decode(response.body)['data'];
       return ProfileModel.fromJson(data);
+    } else if (response.statusCode == 404) {
+      throw const EmptyException(message: 'User tidak ditemukan');
     } else {
-      throw Exception('Failed to load user');
+      throw const ServerException(message: 'Failed to load user');
     }
   }
 }

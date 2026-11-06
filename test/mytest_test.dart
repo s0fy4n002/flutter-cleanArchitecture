@@ -5,12 +5,14 @@ import 'package:clean_architecture/features/profile/data/models/profile_model.da
 
 void main() async {
   final RemoteDataSourceImpl remoteDataSource = RemoteDataSourceImpl();
-  List<ProfileModel> response = await remoteDataSource.getAllUser(1);
+  try {
+    ProfileModel userResponse = await remoteDataSource.getUser(999999);
 
-  for (var user in response) {
-    String jsonString = const JsonEncoder.withIndent(
+    String userJsonString = const JsonEncoder.withIndent(
       '  ',
-    ).convert(user.toJson());
-    print(jsonString);
+    ).convert(userResponse.toJson());
+    print(userJsonString);
+  } catch (e) {
+    print(e);
   }
 }
