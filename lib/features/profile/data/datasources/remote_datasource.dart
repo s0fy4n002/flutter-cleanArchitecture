@@ -10,9 +10,13 @@ abstract class RemoteDataSource {
 }
 
 class RemoteDataSourceImpl implements RemoteDataSource {
+  final http.Client client;
+
+  RemoteDataSourceImpl({required this.client});
+
   @override
   Future<List<ProfileModel>> getAllUser(int page) async {
-    final response = await http.get(
+    final response = await client.get(
       Uri.parse('https://reqres.in/api/users?page=$page'),
     );
 
@@ -28,10 +32,11 @@ class RemoteDataSourceImpl implements RemoteDataSource {
   Future<ProfileModel> getUser(int id) async {
     // TODO: implement getUser
     Uri url = Uri.parse('https://reqres.in/api/users/$id');
-    final response = await http.get(url);
+    final response = await client.get(url);
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> data = json.decode(response.body)['data'];
+      print("data = adalah $data");
       return ProfileModel.fromJson(data);
     } else if (response.statusCode == 404) {
       throw const EmptyException(message: 'User tidak ditemukan');
