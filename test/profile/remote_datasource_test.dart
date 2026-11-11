@@ -21,6 +21,7 @@ void main() async {
   const int userId = 1;
   const int page = 1;
   Uri urlGetUser = Uri.parse('https://reqres.in/api/users/$userId');
+  Uri urlGetAllUser = Uri.parse('https://reqres.in/api/users?page=$page');
 
   ProfileModel fakeProfile = const ProfileModel(
     id: userId,
@@ -125,7 +126,7 @@ void main() async {
   });
 
   group("Test RemoteDataSourceImpl", () {
-    group("getUserImpl", () {
+    group("getUser()", () {
       test(
         'harus mengembalikan ProfileModel ketika response code 200 (Sukses)',
         () async {
@@ -143,6 +144,90 @@ void main() async {
           expect(result, isA<ProfileModel>());
           expect(result.toJson(), fakeDataJson);
           verify(mockClient.get(urlGetUser)).called(1);
+        },
+      );
+
+      test(
+        'harus melempar EmptyException ketika response code 404 (User tidak ditemukan)',
+        () async {
+          // Arrange
+          when(mockClient.get(urlGetUser)).thenAnswer(
+            (_) async =>
+                http.Response('{"error": "User tidak ditemukan"}', 404),
+          );
+
+          // Act & Assert
+          expect(
+            () => remoteDataSourceImpl.getUser(userId),
+            throwsA(
+              isA<EmptyException>().having(
+                (e) => e.message,
+                'message',
+                'User tidak ditemukan',
+              ),
+            ),
+          );
+          verify(mockClient.get(urlGetUser)).called(1);
+        },
+      );
+
+      test(
+        'harus melempar ServerException ketika response code selain 200 atau 404 (misal: 500)',
+        () async {
+          // Arrange
+          when(
+            mockClient.get(urlGetUser),
+          ).thenAnswer((_) async => http.Response('Server Error', 500));
+
+          // Act & Assert
+          expect(
+            () => remoteDataSourceImpl.getUser(userId),
+            throwsA(
+              isA<ServerException>().having(
+                (e) => e.message,
+                'message',
+                'Failed to load user',
+              ),
+            ),
+          );
+          verify(mockClient.get(urlGetUser)).called(1);
+        },
+      );
+    });
+
+    group("getAllUser()", () {
+      test('test harus mengembalikan List<ProfileModel>', () async {
+        final tResponseJson = json.encode({
+          "data": [fakeDataJson],
+        });
+        when(
+          mockClient.get(urlGetAllUser),
+        ).thenAnswer((_) async => http.Response(tResponseJson, 200));
+
+        List<ProfileModel> result = await remoteDataSourceImpl.getAllUser(page);
+        print("result adalah $result");
+        // Assert
+        expect(result, isA<List<ProfileModel>>());
+        verify(mockClient.get(urlGetAllUser)).called(1);
+      });
+
+      test(
+        'harus melempar Exception("Failed to load users") ketika response code selain 200 (misal: 400/500)',
+        () async {
+          // Arrange
+          when(
+            mockClient.get(urlGetAllUser),
+          ).thenAnswer((_) async => http.Response(jsonEncode({}), 500));
+
+          try {
+            await remoteDataSourceImpl.getAllUser(page);
+          } on EmptyException catch (e) {
+            fail("never reach here");
+          } catch (e) {
+            expect(e, isA<ServerException>());
+          }
+
+          verify(mockClient.get(urlGetAllUser)).called(1);
         },
       );
     });

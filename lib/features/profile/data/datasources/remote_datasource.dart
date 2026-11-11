@@ -24,7 +24,7 @@ class RemoteDataSourceImpl implements RemoteDataSource {
       final List<dynamic> data = json.decode(response.body)['data'];
       return data.map((item) => ProfileModel.fromJson(item)).toList();
     } else {
-      throw Exception('Failed to load users');
+      throw ServerException(message: 'Failed to load users');
     }
   }
 
