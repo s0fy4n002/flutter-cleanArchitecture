@@ -36,7 +36,7 @@ class RemoteDataSourceImpl implements RemoteDataSource {
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> data = json.decode(response.body)['data'];
-      print("data = adalah $data");
+
       return ProfileModel.fromJson(data);
     } else if (response.statusCode == 404) {
       throw const EmptyException(message: 'User tidak ditemukan');

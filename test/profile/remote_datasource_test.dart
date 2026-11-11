@@ -130,12 +130,11 @@ void main() async {
       test(
         'harus mengembalikan ProfileModel ketika response code 200 (Sukses)',
         () async {
-          // Arrange
-          final tResponseJson = json.encode({"data": fakeDataJson});
+          final tDataJson = json.encode({"data": fakeDataJson});
 
           when(
             mockClient.get(urlGetUser),
-          ).thenAnswer((_) async => http.Response(tResponseJson, 200));
+          ).thenAnswer((_) async => http.Response(tDataJson, 200));
 
           // Act
           final result = await remoteDataSourceImpl.getUser(userId);
