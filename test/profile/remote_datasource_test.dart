@@ -33,7 +33,7 @@ void main() async {
 
   Map<String, dynamic> fakeDataJson = fakeProfile.toJson();
 
-  group("Test RemoteDataSource", () {
+  group("Test Abstract RemoteDataSource", () {
     group("getUser()", () {
       print("\n");
       test('success', () async {
