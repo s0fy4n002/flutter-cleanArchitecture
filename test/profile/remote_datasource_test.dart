@@ -9,12 +9,14 @@
 // test spesifik
 // >> flutter test test/profile/remote_datasource_test.dart --coverage
 
-// GENERATE TAMPILAN HTML
-// >> genhtml coverage/lcov.info -o coverage/html --legend -t "Coverage Report" --branch-coverage --function-coverage
-
 /* 
   This command is used to replace backslashes with forward slashes in the lcov.info file.
-  >> sed -i 's#\\#/#g' coverage/lcov.info 
+  >> sed -i 's#\\#/#g' coverage/lcov.info
+*/
+
+/*
+  GENERATE TAMPILAN HTML
+  >> sed -i 's#\\#/#g' coverage/lcov.info && genhtml coverage/lcov.info -o coverage/html --legend -t "Coverage Report" --branch-coverage --function-coverage
 */
 
 //open coverage/html/index.html
