@@ -30,7 +30,6 @@ class RemoteDataSourceImpl implements RemoteDataSource {
 
   @override
   Future<ProfileModel> getUser(int id) async {
-    // TODO: implement getUser
     Uri url = Uri.parse('https://reqres.in/api/users/$id');
     final response = await client.get(url);
 

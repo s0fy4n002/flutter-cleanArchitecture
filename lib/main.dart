@@ -1,4 +1,4 @@
-import 'package:clean_architecture/features/profile/presentation/pages/all_user_page.dart';
+import 'package:clean_architecture/routes/my_router.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,6 +11,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: AllUserPage());
+    return MaterialApp.router(routerConfig: MyRouter().router);
   }
 }

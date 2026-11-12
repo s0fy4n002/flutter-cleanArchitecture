@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class AllUserPage extends StatelessWidget {
   const AllUserPage({super.key});
@@ -10,7 +11,15 @@ class AllUserPage extends StatelessWidget {
       body: ListView.builder(
         itemCount: 10, // Replace with your actual user count
         itemBuilder: (context, index) {
-          return Text("User $index"); // Replace with your actual user data
+          return ListTile(
+            onTap: () {
+              // Navigator.of(
+              //   context,
+              // ).push(MaterialPageRoute(builder: (context) => DetailUserPage()));
+              context.pushNamed("detail_user");
+            },
+            title: Text("User ${index + 1}"),
+          );
         },
       ),
     );

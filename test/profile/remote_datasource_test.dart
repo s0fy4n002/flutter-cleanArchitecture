@@ -48,26 +48,13 @@ void main() async {
 
   group("Abstract RemoteDataSource", () {
     group("getUser()", () {
-      print("\n");
       test('success', () async {
-        //proses stubing
-        when(
-          remoteDataSource.getUser(1),
-        ).thenAnswer((Invocation invocation) async => fakeProfile);
+        when(remoteDataSource.getUser(1)).thenAnswer((_) async => fakeProfile);
 
-        try {
-          ProfileModel response = await remoteDataSource.getUser(1);
-          print(response.toJson());
-        } catch (e) {
-          // Check if the exception is of type EmptyException.
-          if (e is EmptyException) {
-            print('Caught EmptyException: ${e.message}');
-          } else {
-            print('Caught unexpected exception: $e');
-          }
-        } finally {
-          print("Test completed for get user success.");
-        }
+        final result = await remoteDataSource.getUser(1);
+
+        expect(result, fakeProfile);
+        verify(remoteDataSource.getUser(1)).called(1);
       });
 
       test('failed', () async {
@@ -76,22 +63,11 @@ void main() async {
           remoteDataSource.getUser(userId),
         ).thenThrow(EmptyException(message: 'User not found'));
 
-        print('Calling getUser with id: $userId');
-
-        try {
-          ProfileModel response = await remoteDataSource.getUser(userId);
-          print(response.toJson());
-        } catch (e) {
-          // Check if the exception is of type EmptyException.
-          if (e is EmptyException) {
-            print('Caught EmptyException: ${e.message}');
-          } else {
-            print('Caught unexpected exception: $e');
-          }
-        }
+        expect(
+          () => remoteDataSource.getUser(1),
+          throwsA(isA<EmptyException>()),
+        );
       });
-
-      print("\n");
     });
 
     group("getAllUsers", () {
@@ -100,22 +76,9 @@ void main() async {
         when(
           remoteDataSource.getAllUser(page),
         ).thenAnswer((Invocation invocation) async => [fakeProfile]);
-
-        try {
-          List<ProfileModel> response = await remoteDataSource.getAllUser(page);
-          print(response.map((e) => e.toJson()).toList());
-        } catch (e) {
-          // Check if the exception is of type EmptyException.
-          if (e is EmptyException) {
-            print('Caught EmptyException: ${e.message}');
-          } else {
-            print('Caught unexpected exception: $e');
-          }
-        } finally {
-          print("Test completed for get all users success.");
-        }
+        List<ProfileModel> response = await remoteDataSource.getAllUser(page);
+        expect(response, isA<List<ProfileModel>>());
       });
-      print("\n");
 
       test('failed', () async {
         //proses stubing
@@ -123,17 +86,10 @@ void main() async {
           remoteDataSource.getAllUser(page),
         ).thenThrow(EmptyException(message: 'No users found'));
 
-        try {
-          List<ProfileModel> response = await remoteDataSource.getAllUser(page);
-          print(response.map((e) => e.toJson()).toList());
-        } catch (e) {
-          // Check if the exception is of type EmptyException.
-          if (e is EmptyException) {
-            print('Caught EmptyException: ${e.message}');
-          } else {
-            print('Caught unexpected exception: $e');
-          }
-        }
+        expect(
+          () => remoteDataSource.getAllUser(page),
+          throwsA(isA<EmptyException>()),
+        );
       });
     });
   });
@@ -217,7 +173,7 @@ void main() async {
         ).thenAnswer((_) async => http.Response(tResponseJson, 200));
 
         List<ProfileModel> result = await remoteDataSourceImpl.getAllUser(page);
-        print("result adalah $result");
+
         // Assert
         expect(result, isA<List<ProfileModel>>());
         verify(mockClient.get(urlGetAllUser)).called(1);
@@ -234,7 +190,7 @@ void main() async {
           try {
             await remoteDataSourceImpl.getAllUser(page);
           } on EmptyException catch (e) {
-            fail("never reach here");
+            fail("error nya: ${e.message}");
           } catch (e) {
             expect(e, isA<ServerException>());
           }

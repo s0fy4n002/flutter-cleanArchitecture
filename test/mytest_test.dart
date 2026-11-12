@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:clean_architecture/features/profile/data/datasources/remote_datasource.dart';
 import 'package:clean_architecture/features/profile/data/models/profile_model.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -15,11 +13,6 @@ void main() async {
       try {
         ProfileModel userResponse = await remoteDataSource.getUser(1);
 
-        String userJsonString = const JsonEncoder.withIndent(
-          '  ',
-        ).convert(userResponse.toJson());
-
-        print("userJsonString = $userJsonString");
         expect(userResponse, isA<ProfileModel>());
         expect(userResponse.id, 1);
       } catch (e) {
