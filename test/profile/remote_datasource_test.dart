@@ -3,23 +3,13 @@
 // >> flutter pub get
 // >> flutter test --machine > tests.output
 
-// test semua file yang ada di folder test
 // >> flutter test --coverage
+// >> sed -i 's#\\#/#g' coverage/lcov.info
+// >> lcov --remove coverage/lcov.info "*lib/main.dart" "*lib/core/error/*" "*lib/features/profile/data/models/*" -o coverage/lcov_clean.info
+// >> genhtml coverage/lcov_clean.info -o coverage/html
 
 // test spesifik
 // >> flutter test test/profile/remote_datasource_test.dart --coverage
-
-/* 
-  This command is used to replace backslashes with forward slashes in the lcov.info file.
-  >> sed -i 's#\\#/#g' coverage/lcov.info
-*/
-
-/*
-  GENERATE TAMPILAN HTML
-  >> sed -i 's#\\#/#g' coverage/lcov.info && genhtml coverage/lcov.info -o coverage/html --legend -t "Coverage Report" --branch-coverage --function-coverage
-*/
-
-//open coverage/html/index.html
 
 import 'dart:convert';
 
