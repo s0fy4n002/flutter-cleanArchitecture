@@ -20,8 +20,10 @@ void main() async {
         ).convert(userResponse.toJson());
 
         print("userJsonString = $userJsonString");
+        expect(userResponse, isA<ProfileModel>());
+        expect(userResponse.id, 1);
       } catch (e) {
-        print("Error: $e");
+        fail("Failed to get user: $e");
       }
     });
   });

@@ -1,3 +1,24 @@
+//INSTRUCTION FOR GENERATE COVERAGE
+// >> flutter pub run build_runner build --delete-conflicting-outputs
+// >> flutter pub get
+// >> flutter test --machine > tests.output
+
+// test semua file yang ada di folder test
+// >> flutter test --coverage
+
+// test spesifik
+// >> flutter test test/profile/remote_datasource_test.dart --coverage
+
+// GENERATE TAMPILAN HTML
+// >> genhtml coverage/lcov.info -o coverage/html --legend -t "Coverage Report" --branch-coverage --function-coverage
+
+/* 
+  This command is used to replace backslashes with forward slashes in the lcov.info file.
+  >> sed -i 's#\\#/#g' coverage/lcov.info 
+*/
+
+//open coverage/html/index.html
+
 import 'dart:convert';
 
 import 'package:clean_architecture/core/error/exception.dart';
@@ -33,7 +54,7 @@ void main() async {
 
   Map<String, dynamic> fakeDataJson = fakeProfile.toJson();
 
-  group("Test Abstract RemoteDataSource", () {
+  group("Abstract RemoteDataSource", () {
     group("getUser()", () {
       print("\n");
       test('success', () async {
@@ -125,7 +146,7 @@ void main() async {
     });
   });
 
-  group("Test RemoteDataSourceImpl", () {
+  group("RemoteDataSourceImpl", () {
     group("getUser()", () {
       test(
         'harus mengembalikan ProfileModel ketika response code 200 (Sukses)',

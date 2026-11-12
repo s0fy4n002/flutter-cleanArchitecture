@@ -1,0 +1,62 @@
+{"protocolVersion":"0.1.1","runnerVersion":null,"pid":856,"type":"start","time":0}
+{"suite":{"id":0,"platform":"vm","path":"D:/android/flutter/clean_architecture/test/mytest_test.dart"},"type":"suite","time":0}
+{"test":{"id":1,"name":"loading D:/android/flutter/clean_architecture/test/mytest_test.dart","suiteID":0,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":1}
+{"suite":{"id":2,"platform":"vm","path":"D:/android/flutter/clean_architecture/test/profile/remote_datasource_test.dart"},"type":"suite","time":6}
+{"test":{"id":3,"name":"loading D:/android/flutter/clean_architecture/test/profile/remote_datasource_test.dart","suiteID":2,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":6}
+{"suite":{"id":4,"platform":"vm","path":"D:/android/flutter/clean_architecture/test/widget_test.dart"},"type":"suite","time":7}
+{"test":{"id":5,"name":"loading D:/android/flutter/clean_architecture/test/widget_test.dart","suiteID":4,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":7}
+{"count":3,"time":7,"type":"allSuites"}
+
+[{"event":"test.startedProcess","params":{"vmServiceUri":null}}]
+
+[{"event":"test.startedProcess","params":{"vmServiceUri":null}}]
+
+[{"event":"test.startedProcess","params":{"vmServiceUri":null}}]
+{"testID":1,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":2983}
+{"group":{"id":6,"suiteID":0,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":1,"line":null,"column":null,"url":null},"type":"group","time":2989}
+{"group":{"id":7,"suiteID":0,"parentID":6,"name":"get user real","metadata":{"skip":false,"skipReason":null},"testCount":1,"line":13,"column":3,"url":"file:///D:/android/flutter/clean_architecture/test/mytest_test.dart"},"type":"group","time":2990}
+{"test":{"id":8,"name":"get user real get user by id","suiteID":0,"groupIDs":[6,7],"metadata":{"skip":false,"skipReason":null},"line":14,"column":5,"url":"file:///D:/android/flutter/clean_architecture/test/mytest_test.dart"},"type":"testStart","time":2990}
+{"testID":8,"messageType":"print","message":"userJsonString = {\n  \"id\": 1,\n  \"first_name\": \"George\",\n  \"last_name\": \"Bluth\",\n  \"full_name\": \"George Bluth\",\n  \"avatar\": \"https://reqres.in/img/faces/1-image.jpg\",\n  \"email\": \"george.bluth@reqres.in\"\n}","type":"print","time":3251}
+{"testID":8,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":3253}
+{"testID":3,"messageType":"print","message":"\n","type":"print","time":3304}
+{"testID":3,"messageType":"print","message":"\n","type":"print","time":3306}
+{"testID":3,"messageType":"print","message":"\n","type":"print","time":3308}
+{"testID":3,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":3322}
+{"group":{"id":9,"suiteID":2,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":9,"line":null,"column":null,"url":null},"type":"group","time":3322}
+{"group":{"id":10,"suiteID":2,"parentID":9,"name":"Abstract RemoteDataSource","metadata":{"skip":false,"skipReason":null},"testCount":4,"line":52,"column":3,"url":"file:///D:/android/flutter/clean_architecture/test/profile/remote_datasource_test.dart"},"type":"group","time":3322}
+{"group":{"id":11,"suiteID":2,"parentID":10,"name":"Abstract RemoteDataSource getUser()","metadata":{"skip":false,"skipReason":null},"testCount":2,"line":53,"column":5,"url":"file:///D:/android/flutter/clean_architecture/test/profile/remote_datasource_test.dart"},"type":"group","time":3323}
+{"test":{"id":12,"name":"Abstract RemoteDataSource getUser() success","suiteID":2,"groupIDs":[9,10,11],"metadata":{"skip":false,"skipReason":null},"line":55,"column":7,"url":"file:///D:/android/flutter/clean_architecture/test/profile/remote_datasource_test.dart"},"type":"testStart","time":3323}
+{"testID":12,"messageType":"print","message":"{id: 1, first_name: M, last_name: Sofyansyah, full_name: M Sofyansyah, avatar: avatar_url, email: john.doe@example.com}","type":"print","time":3366}
+{"testID":12,"messageType":"print","message":"Test completed for get user success.","type":"print","time":3366}
+{"testID":12,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":3367}
+{"test":{"id":13,"name":"Abstract RemoteDataSource getUser() failed","suiteID":2,"groupIDs":[9,10,11],"metadata":{"skip":false,"skipReason":null},"line":76,"column":7,"url":"file:///D:/android/flutter/clean_architecture/test/profile/remote_datasource_test.dart"},"type":"testStart","time":3368}
+{"testID":13,"messageType":"print","message":"Calling getUser with id: 1","type":"print","time":3372}
+{"testID":13,"messageType":"print","message":"Caught EmptyException: User not found","type":"print","time":3372}
+{"testID":13,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":3373}
+{"group":{"id":14,"suiteID":2,"parentID":10,"name":"Abstract RemoteDataSource getAllUsers","metadata":{"skip":false,"skipReason":null},"testCount":2,"line":100,"column":5,"url":"file:///D:/android/flutter/clean_architecture/test/profile/remote_datasource_test.dart"},"type":"group","time":3374}
+{"test":{"id":15,"name":"Abstract RemoteDataSource getAllUsers success","suiteID":2,"groupIDs":[9,10,14],"metadata":{"skip":false,"skipReason":null},"line":101,"column":7,"url":"file:///D:/android/flutter/clean_architecture/test/profile/remote_datasource_test.dart"},"type":"testStart","time":3374}
+{"testID":15,"messageType":"print","message":"[{id: 1, first_name: M, last_name: Sofyansyah, full_name: M Sofyansyah, avatar: avatar_url, email: john.doe@example.com}]","type":"print","time":3381}
+{"testID":15,"messageType":"print","message":"Test completed for get all users success.","type":"print","time":3381}
+{"testID":15,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":3382}
+{"test":{"id":16,"name":"Abstract RemoteDataSource getAllUsers failed","suiteID":2,"groupIDs":[9,10,14],"metadata":{"skip":false,"skipReason":null},"line":123,"column":7,"url":"file:///D:/android/flutter/clean_architecture/test/profile/remote_datasource_test.dart"},"type":"testStart","time":3383}
+{"testID":16,"messageType":"print","message":"Caught EmptyException: No users found","type":"print","time":3386}
+{"testID":16,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":3387}
+{"group":{"id":17,"suiteID":2,"parentID":9,"name":"RemoteDataSourceImpl","metadata":{"skip":false,"skipReason":null},"testCount":5,"line":144,"column":3,"url":"file:///D:/android/flutter/clean_architecture/test/profile/remote_datasource_test.dart"},"type":"group","time":3387}
+{"group":{"id":18,"suiteID":2,"parentID":17,"name":"RemoteDataSourceImpl getUser()","metadata":{"skip":false,"skipReason":null},"testCount":3,"line":145,"column":5,"url":"file:///D:/android/flutter/clean_architecture/test/profile/remote_datasource_test.dart"},"type":"group","time":3387}
+{"test":{"id":19,"name":"RemoteDataSourceImpl getUser() harus mengembalikan ProfileModel ketika response code 200 (Sukses)","suiteID":2,"groupIDs":[9,17,18],"metadata":{"skip":false,"skipReason":null},"line":146,"column":7,"url":"file:///D:/android/flutter/clean_architecture/test/profile/remote_datasource_test.dart"},"type":"testStart","time":3388}
+{"testID":19,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":3412}
+{"test":{"id":20,"name":"RemoteDataSourceImpl getUser() harus melempar EmptyException ketika response code 404 (User tidak ditemukan)","suiteID":2,"groupIDs":[9,17,18],"metadata":{"skip":false,"skipReason":null},"line":165,"column":7,"url":"file:///D:/android/flutter/clean_architecture/test/profile/remote_datasource_test.dart"},"type":"testStart","time":3412}
+{"testID":20,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":3426}
+{"test":{"id":21,"name":"RemoteDataSourceImpl getUser() harus melempar ServerException ketika response code selain 200 atau 404 (misal: 500)","suiteID":2,"groupIDs":[9,17,18],"metadata":{"skip":false,"skipReason":null},"line":189,"column":7,"url":"file:///D:/android/flutter/clean_architecture/test/profile/remote_datasource_test.dart"},"type":"testStart","time":3427}
+{"testID":21,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":3436}
+{"group":{"id":22,"suiteID":2,"parentID":17,"name":"RemoteDataSourceImpl getAllUser()","metadata":{"skip":false,"skipReason":null},"testCount":2,"line":213,"column":5,"url":"file:///D:/android/flutter/clean_architecture/test/profile/remote_datasource_test.dart"},"type":"group","time":3437}
+{"test":{"id":23,"name":"RemoteDataSourceImpl getAllUser() test harus mengembalikan List<ProfileModel>","suiteID":2,"groupIDs":[9,17,22],"metadata":{"skip":false,"skipReason":null},"line":214,"column":7,"url":"file:///D:/android/flutter/clean_architecture/test/profile/remote_datasource_test.dart"},"type":"testStart","time":3437}
+{"testID":23,"messageType":"print","message":"result adalah [ProfileModel(1, john.doe@example.com, M Sofyansyah, avatar_url)]","type":"print","time":3443}
+{"testID":23,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":3443}
+{"test":{"id":24,"name":"RemoteDataSourceImpl getAllUser() harus melempar Exception(\"Failed to load users\") ketika response code selain 200 (misal: 400/500)","suiteID":2,"groupIDs":[9,17,22],"metadata":{"skip":false,"skipReason":null},"line":229,"column":7,"url":"file:///D:/android/flutter/clean_architecture/test/profile/remote_datasource_test.dart"},"type":"testStart","time":3444}
+{"testID":24,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":3450}
+{"testID":5,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":3582}
+{"group":{"id":25,"suiteID":4,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":1,"line":null,"column":null,"url":null},"type":"group","time":3582}
+{"test":{"id":26,"name":"Counter increments smoke test","suiteID":4,"groupIDs":[25],"metadata":{"skip":false,"skipReason":null},"line":174,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":14,"root_column":3,"root_url":"file:///D:/android/flutter/clean_architecture/test/widget_test.dart"},"type":"testStart","time":3583}
+{"testID":26,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":4484}
+{"success":true,"type":"done","time":4508}
