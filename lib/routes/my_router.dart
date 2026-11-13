@@ -12,10 +12,13 @@ class MyRouter {
         pageBuilder: (context, state) => NoTransitionPage(child: AllUserPage()),
         routes: [
           GoRoute(
-            path: "detail-user",
+            path: "detail-user/:id",
             name: "detail_user",
-            pageBuilder: (context, state) =>
-                NoTransitionPage(child: DetailUserPage()),
+            pageBuilder: (context, state) {
+              return NoTransitionPage(
+                child: DetailUserPage(int.parse(state.pathParameters['id']!)),
+              );
+            },
           ),
         ],
       ),

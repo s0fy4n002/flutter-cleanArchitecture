@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 class DetailUserPage extends StatelessWidget {
-  const DetailUserPage({super.key});
+  final int userId;
+  const DetailUserPage(this.userId, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Detail User')),
+      appBar: AppBar(title: Text("Detail User $userId")),
       body: Card(
         margin: EdgeInsets.all(20),
         child: Padding(
@@ -16,7 +17,7 @@ class DetailUserPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               CircleAvatar(radius: 30, backgroundColor: Colors.grey),
-              Text("ID "),
+              Text("ID $userId"),
               Text("FullName"),
               Text("Email"),
             ],

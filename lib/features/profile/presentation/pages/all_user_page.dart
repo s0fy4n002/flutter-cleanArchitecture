@@ -13,10 +13,10 @@ class AllUserPage extends StatelessWidget {
         itemBuilder: (context, index) {
           return ListTile(
             onTap: () {
-              // Navigator.of(
-              //   context,
-              // ).push(MaterialPageRoute(builder: (context) => DetailUserPage()));
-              context.pushNamed("detail_user");
+              context.pushNamed(
+                "detail_user",
+                pathParameters: {'id': (index + 1).toString()},
+              );
             },
             title: Text("User ${index + 1}"),
           );
